@@ -39,6 +39,12 @@ class OrderedProduct(models.Model):
     quantity = models.IntegerField(default=1)
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True)
     ordered = models.BooleanField(default=False)
+
+    def get_total_product_price(self):
+        return self.quantity * self.products.price
+
+    def get_final_price(self):
+        return self.get_total_product_price()
     
 class Order(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True)
@@ -46,4 +52,9 @@ class Order(models.Model):
     ordered = models.BooleanField(default=False)
     posted = models.DateTimeField(auto_now_add=True, null=True)
    
+    def get_total(self):
+        total = 0
+        for item in self.product.all():
+            total += item.get_final_price()
+        return total
 

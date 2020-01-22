@@ -6,6 +6,7 @@
         <table class="table">
             <thead>
                 <tr>
+                    <th></th>
                     <th scope="col">Item</th>
                     <th scope="col">Price</th>
                     <th scope="col">Quantity</th>
@@ -15,10 +16,32 @@
             <tbody>
                 {% for prod in productss %}
                 <tr>
+                    <td>{{forloop.counter}}</td>
                     <td>{{prod.products.title}}</td>
-                    <td>{{prod.products.price}}</td>
+                    <td>${{prod.products.price}}</td>
                     <td>{{prod.quantity}}</td>
-                    <td></td>
+                    <td>${{prod.get_total_product_price}}</td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="5"> Your cart is empty</td>
+                    <td colspan="5">
+                            <a href="{% url 'index' %}" style="float: right;" class="btn btn-danger mr-2">SHOP NOW</a>
+                    </td>
+                </tr>
+
+                {% endfor %}
+
+                {% for order in ord %}
+                <tr style="font-weight: bold;">
+                    <td colspan='4'>Order Total</td>
+                    <td>${{order.get_total}}</td>
+                </tr>
+                <tr>
+                    <td colspan="5">
+                        <a href="" style="float: right;" class="btn btn-info">CHECKOUT</a>
+                        <a href="{% url 'index' %}" style="float: right;" class="btn btn-danger mr-2">SHOP MORE</a>
+                </td>
                 </tr>
                 {% endfor %}
             </tbody>

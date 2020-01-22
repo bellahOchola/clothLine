@@ -59,5 +59,5 @@ def add_cart(request, id):
 
 def order_summary(request):
     productss = OrderedProduct.objects.all()
-    
-    return render(request, 'summary.html', {'productss':productss} )
+    ord = Order.objects.all()
+    return render(request, 'summary.html', {'productss':productss, 'ord':ord} )
