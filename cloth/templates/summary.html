@@ -1,0 +1,30 @@
+{% extends 'base2.html' %}
+
+{% block content %}
+<div class="container" style="margin-top: 10%;">
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Item</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Quantity</th>
+                    <th scope="col">Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for prod in productss %}
+                <tr>
+                    <td>{{prod.products.title}}</td>
+                    <td>{{prod.products.price}}</td>
+                    <td>{{prod.quantity}}</td>
+                    <td></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+{% endblock %}

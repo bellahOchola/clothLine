@@ -58,5 +58,6 @@ def add_cart(request, id):
     return redirect('product', id=id)
 
 def order_summary(request):
+    productss = OrderedProduct.objects.all()
     
-    return render(request, 'summary.html')
+    return render(request, 'summary.html', {'productss':productss} )
