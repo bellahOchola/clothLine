@@ -61,3 +61,6 @@ def order_summary(request):
     productss = OrderedProduct.objects.all()
     ord = Order.objects.all()
     return render(request, 'summary.html', {'productss':productss, 'ord':ord} )
+
+def check_out(request):
+    return render(request, 'checkout.html')

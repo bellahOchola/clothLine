@@ -26,17 +26,43 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
     'cloth',
     'crispy_forms',
     'bootstrap4',
     'pyuploadcare.dj',
+
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.google',
 ]
 
-REST_FRAMEWORK = {
-    'DEFAULT_AUTHENTICATION_CLASSES': (
-        'rest_framework.authentication.TokenAuthentication',
-    )
+SITE_ID = 1
+
+SOCIALACCOUNT_PROVIDERS = {
+
+    'google': {
+        'APP': {
+            'client_id': '601098271679-9ihcog9ujpg5g9293p077045kjlq17s1.apps.googleusercontent.com',
+            'secret': 'e62bd10e6fdf49d5fbf8d9506175253c',
+            'key': ''
+        }
+    }
 }
+
+SOCIALACCOUNT_PROVIDERS = {    
+     'google': {
+        'SCOPE': [
+            'profile',
+            'email',
+        ],
+        'AUTH_PARAMS': {
+            'access_type': 'online',
+        }
+    }
+}
+
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
