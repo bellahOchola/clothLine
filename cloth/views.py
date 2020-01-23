@@ -13,8 +13,12 @@ from django.contrib import messages
 
 def index(request):
     products = Product.objects.all()
-
     return render(request, 'index.html', {'products':products} )
+
+
+def all_products(request):
+    products = Product.objects.all()
+    return render (request, 'all_products.html', {'products':products})
 
 def signup(request):
     if request.method == 'POST':
@@ -63,4 +67,5 @@ def order_summary(request):
     return render(request, 'summary.html', {'productss':productss, 'ord':ord} )
 
 def check_out(request):
-    return render(request, 'checkout.html')
+    ord = Order.objects.all()
+    return render(request, 'checkout.html', {'ord':ord})

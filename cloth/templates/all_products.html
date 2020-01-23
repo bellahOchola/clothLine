@@ -1,0 +1,48 @@
+{% extends 'base2.html' %}
+{% load static %}
+
+{% block content %}
+<div class="hero-wrap hero-bread " style="background-image: url('{% static 'images/bg_6.jpg' %}'); margin-top:7%;">                                
+    <div class="container">
+      <div class="row no-gutters slider-text align-items-center justify-content-center">
+        <div class="col-md-9 ftco-animate text-center">
+          <h1 class="mb-0 bread">Collection</h1>
+          <p class="breadcrumbs"><span class="mr-2"><a href="{% url 'index' %}">Home</a></span> <span>Product</span></p>
+        </div>
+      </div>
+    </div>
+  </div>
+      
+      <section class="ftco-section bg-light">
+      <div class="container-fluid">
+          <div class="row">
+              {% for product in products %}
+              <div class="col-sm col-md-6 col-lg-3 ftco-animate">
+                  <div class="product">
+                      <a href="#" class="img-prod"><img class="img-fluid" src="{{product.prod_pic.cdn_url}}" alt="Colorlib Template">
+                      </a>
+                      <div class="text py-3 px-3">
+                          <h3><a href="#">{{product.title}}</a></h3>
+                          <div class="d-flex">
+                              <div class="pricing">
+                                  <p class="price"><span class="price-sale">${{product.price}}</span></p>
+                              </div>
+                          </div>
+                          <hr>
+                          <p class="bottom-area d-flex">
+                              <a href="{% url 'cart' product.id %}" class="add-to-cart btn btn-info"><span>Add to cart</span></a>
+                          </p>
+                      </div>
+                  </div>
+              </div>
+              {% endfor %}
+      </div>
+      </div>
+  </section>
+
+
+
+<!-- loader -->
+<div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
+
+{% endblock %}

@@ -1,48 +1,28 @@
-<nav class="navbar fixed-top navbar-expand-lg navbar-light white scrolling-navbar">
-    <div class="container">
-        <a class="navbar-brand waves-effect" href="{% url 'index' %}" target="_blank">
-            <strong class="blue-text">Neurone</strong>
-        </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                <!-- <li class="nav-item active">
-                    <a class="nav-link waves-effect" href="#">Home
-                        <span class="sr-only">(current)</span>
-                    </a>
-                </li> -->
-                <li class="nav-item">
-                    <a class="nav-link waves-effect" href="" target="_blank">About
-                        us</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link waves-effect"
-                        href=""
-                        target="_blank">Products</a>
-                </li>
-            </ul>
+<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+        <div class="container">
+          <a class="navbar-brand" href="{% url 'index' %}">Neurone</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="oi oi-menu"></span> Menu
+          </button>
 
-            <!-- Right -->
-            <ul class="navbar-nav nav-flex-icons">
-                <li class="nav-item">
-                    <!-- <a href="{% url 'order_summary' %}" class="nav-link waves-effect">
-                        <span class="badge red z-depth-1 mr-1"> 1 </span>
-                        <i class="fa fa-shopping-cart ml-1"></i>
-                        <span class="clearfix d-none d-sm-inline-block"> Cart </span>
-                    </a> -->
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link waves-effect btn btn-info">
-                        <span class="clearfix d-none d-sm-inline-block" style="color: white;"> REGISTER/LOGIN </span>
-                    </a>
-                </li>
-            </ul>
+          <div class="collapse navbar-collapse" id="ftco-nav">
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item active"><a href="{% url 'all_products' %}" class="nav-link">Products</a></li>
+              <li class="nav-item dropdown">
+              <!-- <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></a> -->
+              <!-- <div class="dropdown-menu" aria-labelledby="dropdown04">
+                  <a class="dropdown-item" href="shop.html">Shop</a>
+                <a class="dropdown-item" href="product-single.html">Single Product</a>
+                <a class="dropdown-item" href="cart.html">Cart</a>
+                <a class="dropdown-item" href="checkout.html">Checkout</a>
+              </div> -->
+            </li>
+              <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+              <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
+              <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+              <li class="nav-item cta cta-colored"><a href="{% url 'order_summary' %}" class="nav-link"><span class="icon-shopping_cart"></span>[0]</a></li>
 
+            </ul>
+          </div>
         </div>
-
-    </div>
-</nav>
-<!-- Navbar -->
+      </nav>

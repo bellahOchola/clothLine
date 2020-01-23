@@ -10,5 +10,6 @@ urlpatterns = [
     path('order/', views.order_summary, name='order_summary'),
     path('checkout/', views.check_out, name='checkout'),
     path('accounts/', include('allauth.urls')),
+    path('all_products/', views.all_products, name='all_products'),
 ]
 
