@@ -7,6 +7,8 @@ from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.decorators import login_required
 from . models import *
 from django.contrib import messages
+from django.views.decorators.csrf import csrf_exempt
+from paypal.standard.forms import PayPalPaymentsForm
 
 
 # Create your views here.
@@ -61,11 +63,44 @@ def add_cart(request, id):
 
     return redirect('product', id=id)
 
-def order_summary(request):
-    productss = OrderedProduct.objects.all()
-    ord = Order.objects.all()
-    return render(request, 'summary.html', {'productss':productss, 'ord':ord} )
+def order_summary(request, id):
+    productss = OrderedProduct.objects.filter(user = id)
+    ord = Order.objects.filter(user = id)
+    # product = Product.objects.get(id=id)
+    # productss = OrderedProduct.objects.filter(products=product)
+    # ord = Order.objects.all()
+    return render(request, 'summary.html', {'productss':productss, 'ord':ord})
 
-def check_out(request):
-    ord = Order.objects.all()
-    return render(request, 'checkout.html', {'ord':ord})
+def check_out(request, id):
+    ord = Order.objects.filter(user = id)
+
+    args ={}
+    paypal_dict = {
+        'business' : 'bellahkenya@gmail.com',
+        'amount': '20.00',
+        'currency_code': 'USD',
+        'item_name': 'clothings',
+        'invoice':  'unique-invoice-001',
+        'notify_url': 'http://127.0.0.1:8000/please-return-payment/',
+        'return_url': 'http://127.0.0.1:8000/paypal-return/',
+        'cancel_return': 'http://127.0.0.1:8000/paypal-cancel/'
+    }
+
+    form = PayPalPaymentsForm(initial=paypal_dict)
+
+    return render(request, 'checkout.html', {'ord':ord,'form':form})
+
+@csrf_exempt
+def paypal_return(request):
+    args = {
+        'post': request.POST,
+        'get': request.GET
+    }
+    return render(request, 'paypal_return.html', args)
+
+def paypal_cancel(request):
+    args = {
+        'post': request.POST,
+        'get': request.GET
+    }
+    return render(request, 'paypal_cancel.html', args)

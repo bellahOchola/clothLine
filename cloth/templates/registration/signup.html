@@ -5,19 +5,31 @@
 {% block content %}
 <div class="container mt-4">
     <div class="row">
-        <div class="col-md-2"></div>
-        <div class="col-md-8" style="margin-top: 5%;">
+        <div class="col-md-4"></div>
+        <div class="col-md-5" style="margin-top: 5%;">
             <div class="card" style="box-shadow: 2px 2px 5px grey;">
                 <div class="card-body mb-3 mr-3 ml-3 mt-6" style="width:100%">
                     <form action="" method="post" novalidate style="width:100%">
+                        <h3>Signup</h3>
+                        <hr>
                         {% csrf_token%}
-                        {{ form|crispy}}
+                        {% for field in form %}
+                        <p>
+                            {{ field.label_tag }}<br>
+                            {{ field }}
+                            {% for error in field.errors %}
+                            <p style="color: red">{{ error }}</p>
+                            {% endfor %}
+                        </p>
+                        {% endfor %}
+
                         <button type="submit" class="btn btn-primary btn-sm">REGISTER</button>
                     </form>
+                    <hr>
                     <p style="float: right;">Have an account? <a href="{% url 'login' %}">Login</a></p>
                 </div>
             </div>
-            <div class="col-md-2"></div>
+            <div class="col-md-3"></div>
         </div>
     </div>
 

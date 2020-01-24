@@ -30,6 +30,7 @@
                             </tr>
                           </thead>
                           <tbody>
+                            
                               {% for product in productss %}
                             <tr class="text-center">
                               <td class="product-remove"><a href="#"><span class="ion-ios-close"></span></a></td>
@@ -65,7 +66,7 @@
                           <span>${{order.get_total}}</span>
                       </p>
                   </div>
-                  <p class="text-center"><a href="{% url 'checkout' %}" class="btn btn-primary py-3 px-4">Proceed to Checkout</a></p>
+                  <p class="text-center"><a href="{% url 'checkout' user.id %}" class="btn btn-primary py-3 px-4">Proceed to Checkout</a></p>
               </div>
               {% endfor%}
           </div>

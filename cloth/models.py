@@ -58,3 +58,5 @@ class Order(models.Model):
             total += item.get_final_price()
         return total
 
+class Checkout(models.Model):
+    pass

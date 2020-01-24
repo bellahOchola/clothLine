@@ -16,14 +16,9 @@
                             Don't have an account? <a href="{% url 'signup' %}">signup</a><br><br>
                         {% csrf_token%}
                         {{ form|crispy}}
-                        
-                        {% load account socialaccount %}
-                        {% get_providers as socialaccount_providers %}
-                        {% for provider in socialaccount_providers %}
-                        <h5><u>Sign Up with {{provider.name}}</u></h5>
-                        <a title="{{provider.name}}" class="btn btn-success"
-                            href="{% provider_login_url provider.id process=process scope=scope auth_params=auth_params %}">{{provider.name}}</a>
-                        {% endfor %}
+                        <h5><u>Sign Up with Google</u></h5>
+                        <a title="" class="btn btn-success"
+                            href="{% provider_login_url 'google' %}">google</a>
                         <a href=""> <button type="submit" class="btn btn-info btn-sm D-block mx-auto"> LOGIN</button>
                         </a>
                     </form>

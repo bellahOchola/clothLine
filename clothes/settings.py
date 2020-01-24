@@ -27,10 +27,13 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites',
-    'cloth',
+    'paypal.standard.ipn',
+    
     'crispy_forms',
     'bootstrap4',
     'pyuploadcare.dj',
+
+    'cloth',
 
     'allauth',
     'allauth.account',
@@ -38,30 +41,12 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.google',
 ]
 
+PAYPAL_RECEIVER_EMAIL = 'bellahkenya@gmail.com'
+
+PAYPAL_TEST = True
+
 SITE_ID = 1
 
-SOCIALACCOUNT_PROVIDERS = {
-
-    'google': {
-        'APP': {
-            'client_id': '601098271679-9ihcog9ujpg5g9293p077045kjlq17s1.apps.googleusercontent.com',
-            'secret': 'e62bd10e6fdf49d5fbf8d9506175253c',
-            'key': ''
-        }
-    }
-}
-
-SOCIALACCOUNT_PROVIDERS = {    
-     'google': {
-        'SCOPE': [
-            'profile',
-            'email',
-        ],
-        'AUTH_PARAMS': {
-            'access_type': 'online',
-        }
-    }
-}
 
 AUTHENTICATION_BACKENDS=(
     'django.contrib.auth.backends.ModelBackend',
@@ -82,7 +67,7 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'clothes.urls'
-
+'user',
 UPLOADCARE = {
     'pub_key': '07846351ac8b6e4bae39',
     'secret': '2f05a4bab735112a5881',
@@ -186,7 +171,7 @@ STATICFILES_DIRS = (
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
-LOGIN_REDIRECT_URL = 'index'
+LOGIN_REDIRECT_URL = '/'
 
 LOGOUT_REDIRECT_URL = 'login'
 
